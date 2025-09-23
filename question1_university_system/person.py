@@ -100,3 +100,32 @@ class Person(ABC):
         if not email or "@" not in email or "." not in email:
             raise ValueError("Invalid email format")
         return email.lower().strip()
+    
+    # Abstract methods to be implemented by subclasses
+    @abstractmethod
+    def get_responsibilities(self):
+        """Get the responsibilities of this person type."""
+        pass
+    
+    @abstractmethod
+    def get_role(self):
+        """Get the role/type of this person."""
+        pass
+    
+    def get_basic_info(self):
+        """Get basic information about the person."""
+        return {
+            'person_id': self.person_id,
+            'name': self.name,
+            'email': self.email,
+            'role': self.get_role(),
+            'created_at': self._created_at.strftime('%Y-%m-%d')
+        }
+    
+    def __str__(self):
+        """String representation of the person."""
+        return f"{self.get_role()}: {self.name} (ID: {self.person_id})"
+    
+    def __repr__(self):
+        """Developer-friendly representation."""
+        return f"{self.__class__.__name__}(name='{self.name}', email='{self.email}')"
