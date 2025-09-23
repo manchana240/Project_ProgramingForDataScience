@@ -129,3 +129,112 @@ class Person(ABC):
     def __repr__(self):
         """Developer-friendly representation."""
         return f"{self.__class__.__name__}(name='{self.name}', email='{self.email}')"
+    
+    # Staff class - inherits from Person
+class Staff(Person):
+    """
+    Represents staff members in the university.
+    
+    Attributes:
+        staff_id (str): Unique staff identifier
+        department (str): Department where staff works
+        position (str): Job position/title
+        salary (float): Annual salary
+        hire_date (datetime): Date of hiring
+    """
+    
+    def __init__(self, name, email, phone, department, position, salary=0.0, **kwargs):
+        """
+        Initialize a Staff object.
+        
+        Args:
+            name (str): Full name
+            email (str): Email address
+            phone (str): Phone number
+            department (str): Department name
+            position (str): Job position
+            salary (float, optional): Annual salary
+            **kwargs: Additional arguments for Person class
+        """
+        super().__init__(name, email, phone, **kwargs)
+        self._staff_id = f"STF{self.person_id}"
+        self._department = department
+        self._position = position
+        self._salary = self._validate_salary(salary)
+        self._hire_date = datetime.now()
+    
+    @property
+    def staff_id(self):
+        """Get staff ID (read-only)."""
+        return self._staff_id
+    
+    @property
+    def department(self):
+        """Get department."""
+        return self._department
+    
+    @department.setter
+    def department(self, value):
+        """Set department."""
+        if not value or not isinstance(value, str):
+            raise ValueError("Department must be a non-empty string")
+        self._department = value
+    
+    @property
+    def position(self):
+        """Get position."""
+        return self._position
+    
+    @position.setter
+    def position(self, value):
+        """Set position."""
+        if not value or not isinstance(value, str):
+            raise ValueError("Position must be a non-empty string")
+        self._position = value
+    
+    @property
+    def salary(self):
+        """Get salary."""
+        return self._salary
+    
+    @salary.setter
+    def salary(self, value):
+        """Set salary with validation."""
+        self._salary = self._validate_salary(value)
+    
+    def _validate_salary(self, salary):
+        """Validate salary input."""
+        try:
+            salary_float = float(salary)
+            if salary_float < 0:
+                raise ValueError("Salary cannot be negative")
+            return salary_float
+        except (TypeError, ValueError):
+            raise ValueError("Salary must be a valid number")
+    
+    def get_responsibilities(self):
+        """Get staff responsibilities."""
+        return [
+            f"Administrative duties in {self.department}",
+            f"Support {self.position} operations",
+            "Maintain university standards",
+            "Assist students and faculty"
+        ]
+    
+    def get_role(self):
+        """Get role type."""
+        return "Staff"
+    
+    def get_work_info(self):
+        """Get work-related information."""
+        return {
+            'staff_id': self.staff_id,
+            'department': self.department,
+            'position': self.position,
+            'salary': self.salary,
+            'hire_date': self._hire_date.strftime('%Y-%m-%d')
+        }
+    
+    def __str__(self):
+        """String representation."""
+        return f"Staff: {self.name} - {self.position} in {self.department}"
