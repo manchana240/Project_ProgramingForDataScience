@@ -1,0 +1,56 @@
+# PROGRAMMING FOR DATA SCIENCE - COURSEWORK 2025.1
+# Requirements file 
+
+# This file contains all dependencies required for:
+# - Question 1: Enhanced OOP University Management System
+# - Question 2: E-commerce Data Analysis with Web Scraping
+# - Question 3: AI Ethics in Healthcare (documentation tools)
+
+
+# Core Data Analysis and Manipulation
+
+pandas>=1.5.3              # Data manipulation and analysis
+numpy>=1.21.6              # Numerical computing and arrays
+scipy>=1.9.3               # Scientific computing and statistics
+
+# Web Scraping and HTTP Requests
+
+requests>=2.28.2            # HTTP library for API calls and web scraping
+beautifulsoup4>=4.11.2      # HTML/XML parsing for web scraping
+lxml>=4.9.2                 # Fast XML/HTML parser (BeautifulSoup backend)
+urllib3>=1.26.14            # HTTP client library (requests dependency)
+requests-cache>=0.9.7       # HTTP caching to avoid repeated requests
+
+# Data Visualization
+
+matplotlib>=3.6.3           # Static plotting and charts
+seaborn>=0.11.2             # Statistical data visualization
+plotly>=5.12.0              # Interactive plotting and dashboards
+
+
+# Statistical Analysis and Machine Learning
+
+scikit-learn>=1.2.0         # Machine learning algorithms
+statsmodels>=0.13.5         # Statistical modeling and hypothesis testing
+
+
+# Data Import/Export and File Handling
+
+csv>=1.0                    # CSV file handling
+
+
+
+# Development and Testing Tools
+
+notebook>=6.5.2            # Classic Jupyter notebook interface (primary IDE)
+Visual Studio Code 1.104.0	#IDE and version control
+
+
+# INSTALLATION NOTES:
+# 
+# 1. Create virtual environment: python -m venv venv
+# 2. Activate virtual environment:
+#    - Windows: venv\Scripts\activate
+#    - macOS/Linux: source venv/bin/activate
+# 3. Install requirements: pip install -r requirements.txt
+# 4. For development: pip install -r requirements.txt -e .
