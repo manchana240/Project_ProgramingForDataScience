@@ -360,7 +360,7 @@ question2_ecommerce_analysis/
 ### Predictive Model Performance
 - **Price Prediction**: Price = 34.24 + 0.28 × Rating
 
-## 🔍 Technical Implementation Details
+## Technical Implementation Details
 
 ### Web Scraping Ethics & Best Practices
 - **Rate Limiting**: 1-3 second delays between requests
